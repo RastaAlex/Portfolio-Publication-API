@@ -1,73 +1,115 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Portfolio Publication API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This project is a REST API for a portfolio publication site. It allows users to create, manage, and view portfolios containing images and comments.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Features
 
-## Description
+All users can:
+- Sign up
+- View image feed (image, image description, portfolio name that contains this image) ordered by creation time
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Registered users can:
+- Log in and log out
+- Create portfolios
+- Have multiple portfolios
+- Upload images to their portfolios
+- Delete their own profile
+- Delete their own portfolios
+- Delete their own images
 
-## Installation
+## Technologies
 
-```bash
-$ npm install
+- PostgreSQL (using Sequelize)
+- Node.js (using Nest.js)
+
+## Getting Started
+
+1. Clone the repository to your local machine:
+
+```
+git clone https://github.com/RastaAlex/Portfolio-Publication-API
 ```
 
-## Running the app
+2. Change into the project directory:
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+```
+cd portfolio-publication-api
 ```
 
-## Test
+3. Install dependencies:
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+```
+npm install
 ```
 
-## Support
+4. Create a `.env` file with the required configuration settings. Use the `.env.example` file as a reference.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+5. Start the development server:
 
-## Stay in touch
+```
+npm run start:dev
+```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Visit `http://localhost:3000` in your browser to access the API.
+
+## Running Migrations
+
+To create and run migrations for the database, use the following commands:
+
+1. Generate a migration file:
+
+```
+npx sequelize-cli migration:generate --name migration-name
+```
+
+2. Edit the generated file with the required changes.
+
+3. Run the migration:
+
+```
+npx sequelize-cli db:migrate
+```
+
+4. To undo a migration, use the following command:
+
+```
+npx sequelize-cli db:migrate:undo
+```
+
+## API Endpoints
+
+This project exposes the following API endpoints:
+
+### User
+
+- `POST /auth/signup` - Sign up a new user
+- `POST /auth/login` - Log in an existing user
+- `POST /auth/logout` - Log out the current user
+- `GET /user` - Retrieve the current user's profile
+- `DELETE /user` - Delete the current user's profile
+- `POST /user/portfolios` - Create a new portfolio
+- `DELETE /user/portfolios/:portfolioId` - Delete a portfolio by ID
+- `POST /user/portfolios/:portfolioId/images` - Upload an image to a portfolio
+- `DELETE /user/portfolios/:portfolioId/images/:imageId` - Delete an image from a portfolio
+
+### Portfolio
+
+- `GET /portfolios` - Retrieve a list of all portfolios
+- `GET /portfolios/:portfolioId` - Retrieve a portfolio by ID
+
+### Image
+
+- `GET /images` - Retrieve a list of all images
+- `GET /images/:imageId` - Retrieve an image by ID
+- `POST /images/:imageId/comments` - Add a comment to an image
+- `GET /images/:imageId/comments` - Retrieve all comments for an image
+- `GET /images/:imageId/comments/:commentId` - Retrieve a specific comment for an image
+- `DELETE /images/:imageId/comments/:commentId` - Delete a specific comment for an image
+
+## Contributing
+
+Contributions are welcome! Feel free to open issues and submit pull requests to improve the project.
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+This project is released under the [MIT License](LICENSE).
