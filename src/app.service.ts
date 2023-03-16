@@ -1,8 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
 
-@Injectable()
-export class AppService {
-  getHello(): string {
-    return 'Hello World!';
-  }
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  await app.listen(3000);
 }
+
+bootstrap();
