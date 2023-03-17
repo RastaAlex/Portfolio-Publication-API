@@ -2,6 +2,7 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UserService } from '../user/user.service';
 import { JwtService } from '@nestjs/jwt';
 import { User } from '../user/user.entity';
+import { tokenBlacklist } from './blacklist';
 
 @Injectable()
 export class AuthService {
@@ -25,6 +26,10 @@ export class AuthService {
     return {
       access_token: this.jwtService.sign(payload),
     };
+  }
+
+  async logout(token: string) {
+    tokenBlacklist.add(token);
   }
 
   async register(userDto: any) {

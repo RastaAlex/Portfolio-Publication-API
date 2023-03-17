@@ -19,6 +19,7 @@ export class ImageController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Post('portfolio/:portfolioId')
   async create(
     @Param('portfolioId') portfolioId: number,

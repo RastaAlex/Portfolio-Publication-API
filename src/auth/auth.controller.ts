@@ -22,11 +22,16 @@ import {
       return this.authService.login(req.user);
     }
   
-    @HttpCode(204)
+    @HttpCode(200)
     @UseGuards(JwtAuthGuard)
     @Post('logout')
     async logout(@Req() req: RequestWithUser) {
-      // Implement any necessary logout logic, e.g., revoking refresh tokens
+      const token = req.headers.authorization.split(' ')[1];
+      await this.authService.logout(token);
+      return {
+        statusCode: 200,
+        message: 'Logged out successfully',
+      };
     }
   
     @Post('signup')

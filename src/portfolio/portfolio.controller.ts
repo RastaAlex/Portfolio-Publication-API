@@ -23,8 +23,8 @@ export class PortfolioController {
     return this.portfolioService.create(userId, createPortfolioDto);
   }
 
-  @Delete(':id')
-  async delete(@Param('userId') userId: number, @Param('id') id: number) {
-    return this.portfolioService.delete(userId, id);
+  @Delete(':portfolioId')
+  async delete(@Param('userId') userId: number, @Param('portfolioId') portfolioId: number): Promise<void> {
+    return this.portfolioService.delete(userId, portfolioId);
   }
 }

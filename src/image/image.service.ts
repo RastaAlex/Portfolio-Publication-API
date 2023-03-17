@@ -22,17 +22,17 @@ export class ImageService {
     return this.imageRepository.findOne({ where: { id: imageId }, relations: ['portfolio'] });
   }
 
-  async create(portfolioId: number, createImageDto: CreateImageDto): Promise<Image> {
-    const portfolio = await this.portfolioRepository.findOne({ where: { id: portfolioId } });
+async create(portfolioId: number, createImageDto: CreateImageDto): Promise<Image> {
+  const portfolio = await this.portfolioRepository.findOne({ where: { id: portfolioId } });
 
-    if (!portfolio) {
-      throw new Error('Portfolio not found');
-    }
-
-    const image = this.imageRepository.create(createImageDto);
-    image.portfolio = portfolio;
-    return this.imageRepository.save(image);
+  if (!portfolio) {
+    throw new Error('Portfolio not found');
   }
+
+  const image = this.imageRepository.create(createImageDto);
+  image.portfolio = portfolio;
+  return this.imageRepository.save(image);
+}
 
   async delete(imageId: number): Promise<void> {
     await this.imageRepository.delete(imageId);
