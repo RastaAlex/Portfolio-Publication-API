@@ -15,10 +15,6 @@ export function validate(config: any) {
       synchronize: Joi.boolean().required(),
       logging: Joi.boolean().required(),
       entities: Joi.string().required(),
-      migrations: Joi.string().required(),
-      subscribers: Joi.string().required(),
-      entitiesDir: Joi.string().required(),
-      migrationsDir: Joi.string().required(),
     }),
   });
 

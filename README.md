@@ -54,27 +54,7 @@ Visit `http://localhost:3000` in your browser to access the API.
 
 ## Running Migrations
 
-To create and run migrations for the database, use the following commands:
-
-1. Generate a migration file:
-
-```
-npx sequelize-cli migration:generate --name migration-name
-```
-
-2. Edit the generated file with the required changes.
-
-3. Run the migration:
-
-```
-npx sequelize-cli db:migrate
-```
-
-4. To undo a migration, use the following command:
-
-```
-npx sequelize-cli db:migrate:undo
-```
+[WIP]
 
 ## API Endpoints
 

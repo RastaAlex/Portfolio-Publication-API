@@ -25,10 +25,6 @@ export const config = {
     synchronize: process.env.TYPEORM_SYNCHRONIZE === 'true',
     logging: process.env.TYPEORM_LOGGING === 'true',
     entities: process.env.TYPEORM_ENTITIES,
-    migrations: process.env.TYPEORM_MIGRATIONS,
-    subscribers: process.env.TYPEORM_SUBSCRIBERS,
-    entitiesDir: process.env.TYPEORM_ENTITIES_DIR,
-    migrationsDir: process.env.TYPEORM_MIGRATIONS_DIR,
   },
 };
 
