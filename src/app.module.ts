@@ -4,7 +4,6 @@ import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { PortfolioModule } from './portfolio/portfolio.module';
 import { ImageModule } from './image/image.module';
-import { CommentModule } from './comment/comment.module';
 import config from './config/config';
 
 @Module({
@@ -23,7 +22,6 @@ import config from './config/config';
     UserModule,
     PortfolioModule,
     ImageModule,
-    CommentModule,
   ],
 })
 export class AppModule {}

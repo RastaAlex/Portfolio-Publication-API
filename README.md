@@ -80,31 +80,28 @@ npx sequelize-cli db:migrate:undo
 
 This project exposes the following API endpoints:
 
-### User
-
+### Authentication
 - `POST /auth/signup` - Sign up a new user
 - `POST /auth/login` - Log in an existing user
 - `POST /auth/logout` - Log out the current user
-- `GET /user` - Retrieve the current user's profile
-- `DELETE /user` - Delete the current user's profile
-- `POST /user/portfolios` - Create a new portfolio
-- `DELETE /user/portfolios/:portfolioId` - Delete a portfolio by ID
-- `POST /user/portfolios/:portfolioId/images` - Upload an image to a portfolio
-- `DELETE /user/portfolios/:portfolioId/images/:imageId` - Delete an image from a portfolio
+
+### User
+- `GET /users` - Retrieve a list of all users
+- `GET /users/:id` - Retrieve a user by ID
+- `POST /users` - Create a new user
+- `DELETE /users/:id` - Delete a user by ID
 
 ### Portfolio
-
 - `GET /portfolios` - Retrieve a list of all portfolios
 - `GET /portfolios/:portfolioId` - Retrieve a portfolio by ID
+- `POST /user/portfolios` - Create a new portfolio
+- `DELETE /user/portfolios/:portfolioId` - Delete a portfolio by ID
 
 ### Image
-
 - `GET /images` - Retrieve a list of all images
 - `GET /images/:imageId` - Retrieve an image by ID
-- `POST /images/:imageId/comments` - Add a comment to an image
-- `GET /images/:imageId/comments` - Retrieve all comments for an image
-- `GET /images/:imageId/comments/:commentId` - Retrieve a specific comment for an image
-- `DELETE /images/:imageId/comments/:commentId` - Delete a specific comment for an image
+- `POST /images/portfolio/:portfolioId` - Upload an image to a portfolio (with comments)
+- `DELETE /images/:imageId` - Delete an image by ID
 
 ## Contributing
 
