@@ -1,30 +1,26 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  ManyToOne,
-} from 'typeorm';
-import { Portfolio } from '../portfolio/portfolio.entity';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Portfolio } from '@portfolio/portfolio.entity';
+import { Comment } from './comment.interface';
 
 @Entity('images')
 export class Image {
   @PrimaryGeneratedColumn()
-  id: number;
+    id: number;
 
   @Column()
-  name: string;
+    name: string;
 
   @Column({ type: 'text' })
-  description: string;
+    description: string;
 
   @Column()
-  url: string;
+    url: string;
 
   @Column({ type: 'json' })
-  comments: any[];
+    comments: Comment[];
 
   @ManyToOne(() => Portfolio, (portfolio) => portfolio.images, {
     onDelete: 'CASCADE',
   })
-  portfolio: Portfolio;
+    portfolio: Portfolio;
 }

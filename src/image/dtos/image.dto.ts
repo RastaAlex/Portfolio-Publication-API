@@ -1,30 +1,37 @@
-import { IsNotEmpty, IsString, MaxLength, IsArray, ValidateNested } from 'class-validator';
+import {
+  IsArray,
+  IsNotEmpty,
+  IsString,
+  MaxLength,
+  ValidateNested,
+} from 'class-validator';
 import { Type } from 'class-transformer';
+import { Comment } from '../comment.interface';
 
 class CommentDto {
   @IsNotEmpty()
   @IsString()
   @MaxLength(2000)
-  text: string;
+    text: string;
 }
 
 export class CreateImageDto {
   @IsNotEmpty()
   @IsString()
   @MaxLength(255)
-  name: string;
+    name: string;
 
   @IsNotEmpty()
   @IsString()
   @MaxLength(2000)
-  description: string;
+    description: string;
 
   @IsNotEmpty()
   @IsString()
-  url: string;
+    url: string;
 
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => CommentDto)
-  comments: CommentDto[];
+    comments: Comment[];
 }

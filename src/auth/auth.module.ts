@@ -9,7 +9,6 @@ import { LocalStrategy } from './strategies/local.strategy';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { JwtBlacklistStrategy } from './strategies/jwt.blacklist.strategy';
 
-
 @Module({
   imports: [
     UserModule,
@@ -19,7 +18,7 @@ import { JwtBlacklistStrategy } from './strategies/jwt.blacklist.strategy';
       signOptions: { expiresIn: '60m' },
     }),
   ],
-  providers: [AuthService, LocalStrategy,JwtStrategy, JwtBlacklistStrategy],
+  providers: [AuthService, LocalStrategy, JwtStrategy, JwtBlacklistStrategy],
   controllers: [AuthController],
 })
 export class AuthModule {}

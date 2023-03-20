@@ -1,8 +1,16 @@
-import { Controller, Get, Post, Delete, Param, Body, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
 import { ImageService } from './image.service';
 import { Image } from './image.entity';
 import { CreateImageDto } from './dtos/image.dto';
-import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { JwtAuthGuard } from '@auth/guards/jwt-auth.guard';
 
 @Controller('images')
 export class ImageController {
@@ -14,7 +22,7 @@ export class ImageController {
   }
 
   @Get(':imageId')
-  async findOne(@Param('imageId') imageId: number): Promise<Image> {
+  async findOne(@Param('imageId') imageId: number): Promise<Image | null> {
     return this.imageService.findOne(imageId);
   }
 

@@ -6,7 +6,10 @@ import { tokenBlacklist } from '../blacklist';
 import { Request } from 'express';
 
 @Injectable()
-export class JwtBlacklistStrategy extends PassportStrategy(Strategy, 'jwt-blacklist') {
+export class JwtBlacklistStrategy extends PassportStrategy(
+  Strategy,
+  'jwt-blacklist',
+) {
   constructor() {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -20,6 +23,7 @@ export class JwtBlacklistStrategy extends PassportStrategy(Strategy, 'jwt-blackl
     if (tokenBlacklist.has(token)) {
       throw new UnauthorizedException('Token is blacklisted');
     }
+
     return { id: payload.sub, email: payload.email };
   }
 }

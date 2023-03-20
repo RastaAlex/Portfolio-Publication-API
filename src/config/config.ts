@@ -29,8 +29,8 @@ export const config = {
     subscribers: process.env.TYPEORM_SUBSCRIBERS,
     entitiesDir: process.env.TYPEORM_ENTITIES_DIR,
     migrationsDir: process.env.TYPEORM_MIGRATIONS_DIR,
-  }
-}
+  },
+};
 
 const validationResult = validate(config);
 if (validationResult.error) {

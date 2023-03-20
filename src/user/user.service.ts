@@ -20,6 +20,7 @@ export class UserService {
     if (!user) {
       throw new NotFoundException('User not found');
     }
+
     return user;
   }
 
@@ -28,12 +29,14 @@ export class UserService {
     if (!user) {
       throw new NotFoundException('User not found');
     }
+
     return user;
   }
 
   async create(createUserDto: CreateUserDto): Promise<User> {
     const user = this.userRepository.create(createUserDto);
     await this.userRepository.save(user);
+
     return user;
   }
 

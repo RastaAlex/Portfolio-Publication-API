@@ -1,31 +1,31 @@
 import {
-    Entity,
-    PrimaryGeneratedColumn,
-    Column,
-    ManyToOne,
-    OneToMany,
-  } from 'typeorm';
-  import { User } from '../user/user.entity';
-  import { Image } from '../image/image.entity';
-  
-  @Entity('portfolios')
-  export class Portfolio {
-    @PrimaryGeneratedColumn()
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { User } from '@user/user.entity';
+import { Image } from '@image/image.entity';
+
+@Entity('portfolios')
+export class Portfolio {
+  @PrimaryGeneratedColumn()
     id: number;
-  
-    @Column()
+
+  @Column()
     name: string;
-  
-    @Column({ type: 'text' })
+
+  @Column({ type: 'text' })
     description: string;
-  
-    @ManyToOne(() => User, (user) => user.portfolios, {
-      onDelete: 'CASCADE',
-    })
+
+  @ManyToOne(() => User, (user) => user.portfolios, {
+    onDelete: 'CASCADE',
+  })
     user: User;
-  
-    @OneToMany(() => Image, (image) => image.portfolio, {
-      cascade: true,
-    })
+
+  @OneToMany(() => Image, (image) => image.portfolio, {
+    cascade: true,
+  })
     images: Image[];
-  }
+}

@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthModule } from './auth/auth.module';
-import { UserModule } from './user/user.module';
-import { PortfolioModule } from './portfolio/portfolio.module';
-import { ImageModule } from './image/image.module';
+import { AuthModule } from '@auth/auth.module';
+import { UserModule } from '@user/user.module';
+import { PortfolioModule } from '@portfolio/portfolio.module';
+import { ImageModule } from '@image/image.module';
 import config from './config/config';
 
 @Module({
@@ -15,7 +15,7 @@ import config from './config/config';
       username: config.typeorm.username,
       password: config.typeorm.password,
       database: config.typeorm.database,
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      entities: [`${__dirname}/**/*.entity{.ts,.js}`],
       synchronize: config.typeorm.synchronize,
     }),
     AuthModule,
