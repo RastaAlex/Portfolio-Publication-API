@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Image } from './image.entity';
@@ -34,7 +34,7 @@ export class ImageService {
     });
 
     if (!portfolio) {
-      throw new Error('Portfolio not found');
+      throw new NotFoundException('Portfolio not found');
     }
 
     const image = this.imageRepository.create(createImageDto);

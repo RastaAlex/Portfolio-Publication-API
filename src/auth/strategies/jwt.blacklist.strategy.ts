@@ -20,7 +20,7 @@ export class JwtBlacklistStrategy extends PassportStrategy(
 
   async validate(request: Request, payload: any) {
     const token = ExtractJwt.fromAuthHeaderAsBearerToken()(request);
-    if (tokenBlacklist.has(token)) {
+    if (tokenBlacklist.has(token as string)) {
       throw new UnauthorizedException('Token is blacklisted');
     }
 

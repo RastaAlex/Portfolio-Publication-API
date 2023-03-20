@@ -4,7 +4,7 @@ import { resolve } from 'path';
 import { validate } from './config.validation';
 
 const envPath = resolve(__dirname, '..', '..', '.env');
-console.log(envPath);
+
 dotenv.config({ path: envPath });
 
 if (!existsSync(envPath)) {
@@ -16,7 +16,7 @@ export const config = {
     port: parseInt(process.env.APP_PORT as string, 10) || 3000,
   },
   typeorm: {
-    connection: process.env.TYPEORM_CONNECTION as any,
+    connection: process.env.TYPEORM_CONNECTION as string,
     host: process.env.DATABASE_HOST,
     port: parseInt(process.env.DATABASE_PORT as string, 10),
     username: process.env.DATABASE_USER,

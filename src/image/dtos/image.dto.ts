@@ -2,6 +2,7 @@ import {
   IsArray,
   IsNotEmpty,
   IsString,
+  IsUrl,
   MaxLength,
   ValidateNested,
 } from 'class-validator';
@@ -28,6 +29,7 @@ export class CreateImageDto {
 
   @IsNotEmpty()
   @IsString()
+  @IsUrl()
     url: string;
 
   @IsArray()

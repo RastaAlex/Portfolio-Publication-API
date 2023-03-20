@@ -19,7 +19,7 @@ Registered users can:
 
 ## Technologies
 
-- PostgreSQL (using Sequelize)
+- PostgreSQL (TypeORM)
 - Node.js (using Nest.js)
 
 ## Getting Started
@@ -92,10 +92,10 @@ This project exposes the following API endpoints:
 - `DELETE /users/:id` - Delete a user by ID
 
 ### Portfolio
-- `GET /portfolios` - Retrieve a list of all portfolios
-- `GET /portfolios/:portfolioId` - Retrieve a portfolio by ID
-- `POST /user/portfolios` - Create a new portfolio
-- `DELETE /user/portfolios/:portfolioId` - Delete a portfolio by ID
+- `GET users/:userId/portfolios` - Retrieve a list of all portfolios by user ID
+- `GET users/:userId/portfolios/:portfolioId` - Retrieve a portfolio by ID
+- `POST users/:userId/portfolios` - Create a new portfolio
+- `DELETE users/:userId/portfolios/:portfolioId` - Delete a portfolio by ID
 
 ### Image
 - `GET /images` - Retrieve a list of all images

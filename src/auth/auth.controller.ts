@@ -26,13 +26,16 @@ export class AuthController {
   @UseGuards(JwtAuthGuard)
   @Post('logout')
   async logout(@Req() req: RequestWithUser) {
-    const token = req.headers.authorization.split(' ')[1];
-    await this.authService.logout(token);
+    const auth = req.headers.authorization;
+    if (auth) {
+      const token = auth.split(' ')[1];
+      await this.authService.logout(token);
 
-    return {
-      statusCode: 200,
-      message: 'Logged out successfully',
-    };
+      return {
+        statusCode: 200,
+        message: 'Logged out successfully',
+      };
+    }
   }
 
   @Post('signup')
